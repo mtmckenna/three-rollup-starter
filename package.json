@@ -1,0 +1,31 @@
+{
+  "name": "pizza-rollup-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "reload": "livereload 'build/'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm-run-all --parallel reload dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-latest": "^6.24.1",
+    "cssnano": "^3.10.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.3.0",
+    "livereload": "^0.6.2",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.42.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-postcss": "^0.5.3",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^2.0.1",
+    "rollup-watch": "^4.0.0"
+  }
+}
