@@ -7,13 +7,15 @@ import postcss from 'rollup-plugin-postcss';
 import cssnano from 'cssnano';
 
 var isProduction = process.env.NODE_ENV === 'production';
+var cache;
 
 export default {
-  entry: 'src/scripts/main.js',
+  entry: 'src/js/main.js',
   format: 'iife',
   dest: './build/js/bundle.js',
   sourceMap: true,
   moduleName: 'RollupBundle',
+  cache: cache,
   treeshake: isProduction, // removes ~3s from building three.js
   indent: false, // maybe removes ~0.5s from building three.js
   plugins: [
@@ -23,11 +25,11 @@ export default {
       browser: true,
     }),
     babel({
-      exclude: ['node_modules/**', 'src/styles/**']
+      exclude: ['node_modules/**', 'src/css/**']
     }),
     eslint({
       exclude: [
-        'src/styles/**',
+        'src/css/**',
       ]
     }),
     postcss({
