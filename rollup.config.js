@@ -16,7 +16,7 @@ export default {
   sourceMap: true,
   moduleName: 'RollupBundle',
   cache: cache,
-  treeshake: isProduction, // removes ~3s from building three.js
+  treeshake: true,
   indent: false, // maybe removes ~0.5s from building three.js
   plugins: [
     resolve({

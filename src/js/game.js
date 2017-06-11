@@ -1,4 +1,12 @@
-import * as THREE from 'three';
+import {
+  JSONLoader,
+  Mesh,
+  MeshStandardMaterial,
+  PointLight,
+  PerspectiveCamera,
+  Scene,
+  WebGLRenderer
+} from 'three';
 
 const WIDTH = 250;
 const MESH_Y_POSITION = -3.0;
@@ -41,23 +49,23 @@ export default class Game {
   }
 
   createScene() {
-    return new THREE.Scene();
+    return new Scene();
   }
 
   createLight() {
-    const light = new THREE.PointLight(LIGHT_COLOR, LIGHT_INTENSITY);
+    const light = new PointLight(LIGHT_COLOR, LIGHT_INTENSITY);
     light.position.set(-LIGHT_DISTANCE, LIGHT_DISTANCE, LIGHT_DISTANCE);
     return light;
   }
 
   createCamera() {
-    const camera = new THREE.PerspectiveCamera(FOV, WIDTH/WIDTH, NEAR_PLANE, FAR_PLANE);
+    const camera = new PerspectiveCamera(FOV, WIDTH/WIDTH, NEAR_PLANE, FAR_PLANE);
     camera.position.z = CAMERA_Z_POSITION;
     return camera;
   }
 
   createRenderer() {
-    const renderer = new THREE.WebGLRenderer({canvas: this.canvas});
+    const renderer = new WebGLRenderer({canvas: this.canvas});
     renderer.setSize(WIDTH, WIDTH);
     renderer.setClearColor(BACKGROUND_COLOR);
     return renderer;
@@ -65,12 +73,12 @@ export default class Game {
 
   loadModel(path) {
     path = path + '?cacheBust=' + Date.now();
-    const loader = new THREE.JSONLoader();
+    const loader = new JSONLoader();
 
     return new Promise((resolve, reject) => {
       loader.load(path,
         (geometry) => resolve(geometry),
-        null,
+        () => {},
         (error) => reject(error))
     });
   }
@@ -80,8 +88,8 @@ export default class Game {
   }
 
   createMesh(geometry) {
-    const material = new THREE.MeshStandardMaterial({ color: MATERIAL_COLOR });
-    const mesh = new THREE.Mesh(geometry, material);
+    const material = new MeshStandardMaterial({ color: MATERIAL_COLOR });
+    const mesh = new Mesh(geometry, material);
     mesh.position.y = MESH_Y_POSITION;
     mesh.scale.set(SCALE, SCALE, SCALE);
     return mesh;
