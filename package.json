@@ -7,9 +7,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "reload": "livereload 'build/'",
-    "server": "pushd ./build; python -m SimpleHTTPServer 8001; popd",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm-run-all --parallel reload dev server"
+    "watch": "npm-run-all --parallel reload dev"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +26,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.5.3",
     "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-serve": "^0.3.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.0.0"
   },
